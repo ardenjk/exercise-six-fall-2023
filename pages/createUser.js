@@ -1,8 +1,14 @@
+import Header from "@app/components/Header";
+import CreateUserForm from "@/app/components/CreateUserForm";
+
 export default function CreateUser () {
     return (
-        <div>
-            <h1>CreateUser</h1>
-
-        </div>
-    )
+        <>
+        <Header />
+        <main>
+            <h1>Create User</h1>
+            <CreateUserForm />
+        </main>
+        </>
+    );
 }
