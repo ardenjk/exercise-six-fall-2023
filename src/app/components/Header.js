@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./components.module.css"
 
-const Header = ({isLoggedIn, logoutUSer}) => {
+const Header = ({isLoggedIn, logoutUser}) => {
     return (
         <header className = {styles.Header}>
             <nav className={styles.HeaderNav}>
@@ -14,7 +14,7 @@ const Header = ({isLoggedIn, logoutUSer}) => {
                 {!isLoggedIn && (
                     <>
                     <Link href = "/login"> Login | </Link>
-                    <Link href = "/createUser"> Create User </Link>
+                    <Link href = "/create"> Create User </Link>
                     </>
                 )}
                 {/* <Link href = "/"> User Profile | </Link>

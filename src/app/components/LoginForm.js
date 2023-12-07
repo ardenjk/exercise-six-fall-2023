@@ -7,13 +7,13 @@ const LoginForm = ({loginUser}) => {
         <div>
             <h2>Login Form</h2>
             <form className = {styles.Form} onSubmit={(e) => loginUser(e)}>
-                <label htmlFor="email">Name</label>
+                <label htmlFor="email">Email</label>
                 <input type="email" name="email" />
 
-                <label htmlFor="pass">Email</label>
-                <input type="password" name="pass" />
+                <label htmlFor="pass">Password</label>
+                <input type="password" name="password" />
 
-                <button type = "submit">Create User</button>
+                <button type = "submit">Login</button>
             </form>
         </div>
     );

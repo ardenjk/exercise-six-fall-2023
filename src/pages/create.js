@@ -7,7 +7,7 @@ export default function CreateUser ({createUser, isLoggedIn}) {
     
     useEffect(() => {
         //if user is logged in, send them to profile 
-        if (!isLoggedIn) router.push("/");
+        if (isLoggedIn) router.push("/");
     }, [isLoggedIn]);
     
     
@@ -17,4 +17,4 @@ export default function CreateUser ({createUser, isLoggedIn}) {
             <CreateUserForm createUser={createUser}/>
         </main>
     );
-}
+};

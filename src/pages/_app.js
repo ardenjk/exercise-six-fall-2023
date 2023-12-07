@@ -21,7 +21,7 @@ export default function MyApp({ Component, pageProps }) {
 const createUser = useCallback((e) => {
     e.preventDefault();
     //Assign Email and Password to variables from form 
-    const email = e.currentTarget.email.valuie;
+    const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
     const auth = getAuth();
     createUserWithEmailAndPassword (auth,email, password)
@@ -48,6 +48,7 @@ const loginUser = useCallback((e) => {
     e.preventDefault();
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
+
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
     .then ((userCredential) => {
@@ -89,33 +90,29 @@ useEffect(() => {
 //User has loaded page, check their status and set state accordingly
 useEffect(() => {
 
+    if (appInitizlied) {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                //User is signed in
+                setUserInformation(user);
+                setIsLoggedIn(true);
+            } else {
+                //User is signed out
+                setUserInformation(null);
+                setIsLoggedIn(false);
+            }
+            //setLoading to false when everything is complete 
+            setIsLoading(false);
+        }); 
+    }
 }, [appInitizlied]);
-
-    // if (appInitizlied) {
-    //     const auth = getAuth();
-
-
-//         onAuthStateChanged(auth, (user) => {
-//             if (user) {
-//                 //User is signed in
-//                 setUserInformation(user);
-//                 setIsLoggedIn(true);
-//             } else {
-//                 //User is signed out
-//                 setUserInformation(null);
-//                 setIsLoggedIn(false);
-//             }
-//             //setLoading to false when everything is complete 
-//             setIsLoading(false);
-//         }); 
-//     }
-// }, [appInitizlied]);
 
 if (isLoading) return null; 
 
     return (
         <>
-            <Header isLoggedIn={isLoggedIn} logoutUSer={logoutUser} />
+            <Header isLoggedIn={isLoggedIn} logoutUser={logoutUser} />
             <Component
             {...pageProps}
             createUser={createUser}
